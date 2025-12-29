@@ -11,12 +11,31 @@ import type { IPeggedAssetByChainRow, IPeggedAssetsRow, IPeggedChain } from './t
 
 export const peggedAssetsByChainColumns: ColumnDef<IPeggedAssetByChainRow>[] = [
 	{
+		header: 'Rank',
+		id: 'rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			const isSubRow = row.original.name.startsWith('Bridged from')
+			
+			if (isSubRow) {
+				return <span className="text-center">-</span>
+			}
+			
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		id: 'name',
 		accessorFn: (row) => `${row.name}${row.symbol && row.symbol !== '-' ? ` (${row.symbol})` : ''}`,
 		enableSorting: false,
 		cell: ({ getValue, row, table }) => {
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
 			const isSubRow = row.original.name.startsWith('Bridged from')
 
 			return (
@@ -46,13 +65,9 @@ export const peggedAssetsByChainColumns: ColumnDef<IPeggedAssetByChainRow>[] = [
 					)}
 
 					{isSubRow ? (
-						<>
-							<span>-</span>
-							<span>{getValue() as string}</span>
-						</>
+						<span>{getValue() as string}</span>
 					) : (
 						<>
-							<span className="shrink-0">{index + 1}</span>
 							<TokenLogo logo={chainIconUrl(row.original.name)} data-lgonly />
 							<BasicLink
 								href={`/stablecoins/${row.original.name}`}
@@ -149,9 +164,9 @@ export const peggedAssetsByChainColumns: ColumnDef<IPeggedAssetByChainRow>[] = [
 // key: min width of window/screen
 // values: table columns order
 export const assetsByChainColumnOrders = formatColumnOrder({
-	0: ['name', 'change_7d', 'circulating', 'change_1d', 'change_1m', 'bridgeInfo', 'bridgedAmount'],
-	480: ['name', 'change_7d', 'circulating', 'change_1d', 'change_1m', 'bridgeInfo', 'bridgedAmount'],
-	1024: ['name', 'bridgeInfo', 'bridgedAmount', 'change_1d', 'change_7d', 'change_1m', 'circulating']
+	0: ['rank', 'name', 'change_7d', 'circulating', 'change_1d', 'change_1m', 'bridgeInfo', 'bridgedAmount'],
+	480: ['rank', 'name', 'change_7d', 'circulating', 'change_1d', 'change_1m', 'bridgeInfo', 'bridgedAmount'],
+	1024: ['rank', 'name', 'bridgeInfo', 'bridgedAmount', 'change_1d', 'change_7d', 'change_1m', 'circulating']
 })
 
 export const assetsByChainColumnSizes = {
@@ -177,16 +192,27 @@ export const assetsByChainColumnSizes = {
 
 export const peggedAssetsColumns: ColumnDef<IPeggedAssetsRow>[] = [
 	{
+		header: 'Rank',
+		id: 'rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		id: 'name',
 		accessorFn: (row) => `${row.name}${row.symbol && row.symbol !== '-' ? ` (${row.symbol})` : ''}`,
 		enableSorting: false,
 		cell: ({ getValue, row, table }) => {
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
-
 			return (
 				<span className="flex items-center gap-2">
-					<span className="shrink-0">{index + 1}</span>
 					<TokenLogo logo={peggedAssetIconUrl(row.original.name)} data-lgonly />
 					{row.original?.deprecated ? (
 						<BasicLink
@@ -526,12 +552,25 @@ function pegDeviationText(pegDeviationInfo) {
 
 export const peggedChainsColumns: ColumnDef<IPeggedChain>[] = [
 	{
+		header: 'Rank',
+		id: 'rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		accessorKey: 'name',
 		enableSorting: false,
 		cell: ({ getValue, row, table }) => {
 			const value = getValue() as string
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
 			const isSubRow = value.startsWith('Bridged from')
 
 			return (
@@ -561,13 +600,9 @@ export const peggedChainsColumns: ColumnDef<IPeggedChain>[] = [
 					)}
 
 					{isSubRow ? (
-						<>
-							<span className="shrink-0">{index + 1}</span>
-							<span>{value}</span>
-						</>
+						<span>{value}</span>
 					) : (
 						<>
-							<span className="shrink-0">{index + 1}</span>
 							<TokenLogo logo={chainIconUrl(value)} data-lgonly />
 							<BasicLink
 								href={`/stablecoins/${value}`}

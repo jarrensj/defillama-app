@@ -18,13 +18,25 @@ import type { IBridge, IBridgeChain } from './types'
 
 export const bridgesColumn: ColumnDef<IBridge>[] = [
 	{
+		header: 'Rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		accessorKey: 'displayName',
 		enableSorting: false,
 		cell: ({ getValue, row, table }) => {
 			const value = getValue() as string
 			const linkValue = slug(value)
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
 			const rowValues = row.original
 			const icon = rowValues.icon
 			let iconLink
@@ -35,7 +47,6 @@ export const bridgesColumn: ColumnDef<IBridge>[] = [
 
 			return (
 				<span className="flex items-center gap-2">
-					<span className="shrink-0">{index + 1}</span>
 					{icon && <TokenLogo logo={iconLink} data-lgonly />}
 					<BasicLink
 						href={`/bridge/${linkValue}`}
@@ -107,15 +118,26 @@ export const bridgesColumn: ColumnDef<IBridge>[] = [
 
 export const bridgeChainsColumn: ColumnDef<IBridgeChain>[] = [
 	{
+		header: 'Rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		accessorKey: 'name',
 		enableSorting: false,
 		cell: ({ getValue, row, table }) => {
 			const value = getValue() as string
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
 			return (
 				<span className="flex items-center gap-2">
-					<span className="shrink-0">{index + 1}</span>
 					<TokenLogo logo={chainIconUrl(value)} data-lgonly />
 					<BasicLink
 						href={`/bridges/${value}`}

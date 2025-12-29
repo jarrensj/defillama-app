@@ -265,6 +265,7 @@ export function ChainsByCategoryTable({
 // values: table columns order
 const chainsTableColumnOrders = formatColumnOrder({
 	0: [
+		'rank',
 		'name',
 		'tvl',
 		'chainAssets',
@@ -280,6 +281,7 @@ const chainsTableColumnOrders = formatColumnOrder({
 		'mcaptvl'
 	],
 	400: [
+		'rank',
 		'name',
 		'change_7d',
 		'tvl',
@@ -295,6 +297,7 @@ const chainsTableColumnOrders = formatColumnOrder({
 		'mcaptvl'
 	],
 	600: [
+		'rank',
 		'name',
 		'protocols',
 		'tvl',
@@ -310,6 +313,7 @@ const chainsTableColumnOrders = formatColumnOrder({
 		'mcaptvl'
 	],
 	900: [
+		'rank',
 		'name',
 		'protocols',
 		'tvl',
@@ -328,12 +332,23 @@ const chainsTableColumnOrders = formatColumnOrder({
 
 const columns: ColumnDef<IFormattedDataWithExtraTvl>[] = [
 	{
+		header: 'Rank',
+		accessorKey: 'rank',
+		size: 80,
+		enableSorting: false,
+		cell: ({ row, table }) => {
+			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
+			return <span className="font-bold">{index + 1}</span>
+		},
+		meta: {
+			align: 'center' as const
+		}
+	},
+	{
 		header: 'Name',
 		accessorKey: 'name',
 		enableSorting: true,
 		cell: ({ getValue, row, table }) => {
-			const index = row.depth === 0 ? table.getSortedRowModel().rows.findIndex((x) => x.id === row.id) : row.index
-
 			return (
 				<span
 					className="relative flex items-center gap-2"
@@ -361,7 +376,6 @@ const columns: ColumnDef<IFormattedDataWithExtraTvl>[] = [
 					) : (
 						<Bookmark readableName={getValue() as string} isChain data-bookmark className="absolute -left-0.5" />
 					)}
-					<span className="shrink-0">{index + 1}</span>
 
 					<TokenLogo logo={chainIconUrl(getValue())} />
 					<BasicLink
