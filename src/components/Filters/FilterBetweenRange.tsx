@@ -97,6 +97,7 @@ function Form({
 				<input
 					type="number"
 					name="min"
+					min="0"
 					className="h-9 w-full rounded-md border border-(--form-control-border) bg-white px-3 py-1 text-black disabled:opacity-50 dark:bg-black dark:text-white"
 					defaultValue={min || ''}
 				/>
@@ -106,6 +107,7 @@ function Form({
 				<input
 					type="number"
 					name="max"
+					min="0"
 					className="h-9 w-full rounded-md border border-(--form-control-border) bg-white px-3 py-1 text-black disabled:opacity-50 dark:bg-black dark:text-white"
 					defaultValue={max || ''}
 				/>

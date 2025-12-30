@@ -788,6 +788,7 @@ export function YieldsChartTab({
 								<input
 									type="number"
 									placeholder="Min"
+									min="0"
 									value={minTvl ?? ''}
 									onChange={(e) => onMinTvlChange(e.target.value ? Number(e.target.value) : null)}
 									className="pro-text1 placeholder:pro-text3 w-full rounded-md border border-(--form-control-border) bg-(--bg-input) px-2 py-1.5 text-xs focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-hidden"
@@ -795,6 +796,7 @@ export function YieldsChartTab({
 								<input
 									type="number"
 									placeholder="Max"
+									min="0"
 									value={maxTvl ?? ''}
 									onChange={(e) => onMaxTvlChange(e.target.value ? Number(e.target.value) : null)}
 									className="pro-text1 placeholder:pro-text3 w-full rounded-md border border-(--form-control-border) bg-(--bg-input) px-2 py-1.5 text-xs focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-hidden"

@@ -63,7 +63,7 @@ export function YieldsFiltersPanel({
 	const parseFormattedNumber = (value: string): number | undefined => {
 		const cleaned = value.replace(/,/g, '')
 		const parsed = Number(cleaned)
-		return cleaned && !isNaN(parsed) ? parsed : undefined
+		return cleaned && !isNaN(parsed) && parsed >= 0 ? parsed : undefined
 	}
 
 	const handleApply = () => {

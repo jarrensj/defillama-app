@@ -51,6 +51,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'metrics',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'tvlMin',
 		maxKey: 'tvlMax'
 	},
@@ -61,6 +62,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'metrics',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'mcapMin',
 		maxKey: 'mcapMax'
 	},
@@ -71,6 +73,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'metrics',
 		strategies: ['protocols'],
 		format: 'number',
+		min: 0,
 		minKey: 'pfRatioMin',
 		maxKey: 'pfRatioMax'
 	},
@@ -81,6 +84,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'volume',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'volumeDex24hMin',
 		maxKey: 'volumeDex24hMax'
 	},
@@ -91,6 +95,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'volume',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'volume7dMin',
 		maxKey: 'volume7dMax'
 	},
@@ -101,6 +106,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'volume',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'volume30dMin',
 		maxKey: 'volume30dMax'
 	},
@@ -111,6 +117,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'fees',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'fees24hMin',
 		maxKey: 'fees24hMax'
 	},
@@ -121,6 +128,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'fees',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'fees7dMin',
 		maxKey: 'fees7dMax'
 	},
@@ -131,6 +139,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'fees',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'fees30dMin',
 		maxKey: 'fees30dMax'
 	},
@@ -141,6 +150,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'fees',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'fees1yMin',
 		maxKey: 'fees1yMax'
 	},
@@ -151,6 +161,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'revenue24hMin',
 		maxKey: 'revenue24hMax'
 	},
@@ -161,6 +172,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'revenue7dMin',
 		maxKey: 'revenue7dMax'
 	},
@@ -171,6 +183,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'revenue30dMin',
 		maxKey: 'revenue30dMax'
 	},
@@ -181,6 +194,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols', 'chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'revenue1yMin',
 		maxKey: 'revenue1yMax'
 	},
@@ -191,6 +205,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'holderRevenue24hMin',
 		maxKey: 'holderRevenue24hMax'
 	},
@@ -201,6 +216,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'revenue',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'treasuryRevenue24hMin',
 		maxKey: 'treasuryRevenue24hMax'
 	},
@@ -398,6 +414,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'aggregatorsVolume24hMin',
 		maxKey: 'aggregatorsVolume24hMax'
 	},
@@ -408,6 +425,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'aggregatorsVolume7dMin',
 		maxKey: 'aggregatorsVolume7dMax'
 	},
@@ -418,6 +436,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'aggregatorsVolume30dMin',
 		maxKey: 'aggregatorsVolume30dMax'
 	},
@@ -428,6 +447,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'derivativesAggregatorsVolume24hMin',
 		maxKey: 'derivativesAggregatorsVolume24hMax'
 	},
@@ -438,6 +458,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'derivativesAggregatorsVolume7dMin',
 		maxKey: 'derivativesAggregatorsVolume7dMax'
 	},
@@ -448,6 +469,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'aggregators',
 		strategies: ['protocols'],
 		format: 'currency',
+		min: 0,
 		minKey: 'derivativesAggregatorsVolume30dMin',
 		maxKey: 'derivativesAggregatorsVolume30dMax'
 	},
@@ -458,6 +480,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'chain-metrics',
 		strategies: ['chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'stablesMcapMin',
 		maxKey: 'stablesMcapMax'
 	},
@@ -468,6 +491,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'chain-metrics',
 		strategies: ['chains'],
 		format: 'currency',
+		min: 0,
 		minKey: 'bridgedTvlMin',
 		maxKey: 'bridgedTvlMax'
 	},
@@ -478,6 +502,7 @@ export const FILTER_CONFIGS: FilterConfig[] = [
 		category: 'chain-metrics',
 		strategies: ['chains'],
 		format: 'number',
+		min: 0,
 		minKey: 'protocolCountMin',
 		maxKey: 'protocolCountMax'
 	},
